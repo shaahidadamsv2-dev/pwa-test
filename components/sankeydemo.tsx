@@ -69,34 +69,7 @@ export default function SankeyDemo() {
         linkHoverOpacity={0.75}
 
         valueFormat={formatBoth}
-
-        nodeLabel={node => `${node.id} (${formatBoth(node.value)})`}
-        nodeLabelPadding={12}
-        nodeLabelTextColor={{ from: "color", modifiers: [["darker", 1.4]] }}
-
-        tooltip={({ node, link }) => {
-          if (node) {
-            return (
-              <div style={{ padding: 8 }}>
-                <strong>{node.id}</strong>
-                <br />
-                {formatBoth(node.value)}
-              </div>
-            );
-          }
-
-          if (link) {
-            return (
-              <div style={{ padding: 8 }}>
-                {link.source.id} → {link.target.id}
-                <br />
-                <strong>{formatBoth(link.value)}</strong>
-              </div>
-            );
-          }
-
-          return null;
-        }}
+       
       />
     </div>
   );
