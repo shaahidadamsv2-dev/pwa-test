@@ -1,9 +1,17 @@
 import type { AppProps } from 'next/app'
+import Head from "next/head";
 import { ThemeProvider } from 'next-themes'
 import '@/styles/globals.css'
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
+		<>
+		<Head>
+        	<meta
+          	name="viewport"
+          	content="width=device-width, initial-scale=1"
+        	/>
+      	</Head>
 		<ThemeProvider
 			attribute='class'
 			defaultTheme='system'
@@ -11,5 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		>
 			<Component {...pageProps} />
 		</ThemeProvider>
+		</>
+		
 	)
 }
