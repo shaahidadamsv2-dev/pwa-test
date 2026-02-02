@@ -1,4 +1,4 @@
 #!/bin/bash
 git pull origin main
-docker-compose build web
-docker-compose up -d web
+sudo docker-compose build web
+sudo docker-compose up -d web
