@@ -1,0 +1,29 @@
+docker run --rm \
+  -v $(pwd)/certbot/www:/var/www/certbot \
+  -v $(pwd)/certbot/conf:/etc/letsencrypt \
+  certbot/certbot certonly \
+  --webroot -w /var/www/certbot \
+  -d jibbles.netrunnerdebugs.party
+
+
+Whenever you push changes and want to deploy:
+
+Pull latest code (e.g., git pull)
+
+Rebuild your web image:
+
+docker-compose build web
+
+
+Restart the web container with the new image:
+
+docker-compose up -d web
+
+
+This will recreate only the web container with your updated app.
+
+#!/bin/bash
+cd /path/to/your/project
+git pull origin main
+docker-compose build web
+docker-compose up -d web
