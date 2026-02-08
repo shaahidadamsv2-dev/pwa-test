@@ -1,0 +1,13 @@
+services:
+  nextjs-app:
+    build: .
+    container_name: nextjs-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
