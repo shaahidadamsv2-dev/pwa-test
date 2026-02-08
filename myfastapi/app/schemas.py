@@ -11,3 +11,15 @@ class UserOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+class TransactionCreate(BaseModel):
+    amount: float
+    category: str | None = None
+
+class TransactionOut(BaseModel):
+    id: int
+    amount: float
+    category: str | None
+
+    class Config:
+        from_attributes = True
