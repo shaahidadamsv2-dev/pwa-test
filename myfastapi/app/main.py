@@ -1,8 +1,9 @@
 from fastapi import FastAPI
-from myfastapi.app.routers import transactions
+
 from .database import engine
 from .models import Base
 from .routers import users
+from .routers import transactions
 
 Base.metadata.create_all(bind=engine)
 
