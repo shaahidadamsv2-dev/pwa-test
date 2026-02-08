@@ -22,8 +22,7 @@ docker-compose up -d web
 
 This will recreate only the web container with your updated app.
 
-#!/bin/bash
-cd /path/to/your/project
-git pull origin main
-docker-compose build web
-docker-compose up -d web
+docker-compose down --rmi local 
+docker system prune --volumes 
+docker-compose build --no-cache web 
+docker-compose up -d
