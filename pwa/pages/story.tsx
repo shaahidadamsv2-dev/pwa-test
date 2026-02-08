@@ -6,13 +6,13 @@ const categories = ['Groceries', 'Transport', 'Utilities', 'Entertainment']
 
 const Story = () => {
   const [amount, setAmount] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState('')
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState('')
 
   const handleAddExpense = async () => {
     setLoading(true)
-    setError(null)
+    setError('')
     try {
       const res = await fetch('https://jibbles.netrunnerdebugs.party/api/transactions/', {
         method: 'POST',
@@ -21,7 +21,7 @@ const Story = () => {
         },
         body: JSON.stringify({
           amount: parseFloat(amount),
-          category: selectedCategory.toLowerCase(),
+          category: selectedCategory ? selectedCategory.toLowerCase() : null,
         }),
       })
       if (!res.ok) {
@@ -29,10 +29,14 @@ const Story = () => {
       }
       // Optionally reset form
       setAmount('')
-      setSelectedCategory(null)
+      setSelectedCategory('')
       alert('Expense added successfully!')
-    } catch (err) {
-      setError(err.message)
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+    setError(err.message)
+  } else {
+    setError(String(err))
+  }
     } finally {
       setLoading(false)
     }
