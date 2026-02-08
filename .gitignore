@@ -9,3 +9,4 @@ node_modules
 **/public/sw**
 
 .pem
+.env
