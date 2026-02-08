@@ -14,6 +14,8 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - shared-network
 
   postgres:
     image: postgres:16-alpine
@@ -28,6 +30,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - shared-network
 
 volumes:
   pgdata:
+
+networks:
+  shared-network:
+    external: true
