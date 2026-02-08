@@ -24,3 +24,13 @@ services:
 networks:
   shared-network:
     external: true
+
+# sudo docker run --rm \
+#   -v $(pwd)/certbot/www:/var/www/certbot \
+#   -v $(pwd)/certbot/conf:/etc/letsencrypt \
+#   certbot/certbot certonly \
+#   --webroot -w /var/www/certbot \
+#   -d jibbles.netrunnerdebugs.party \
+#   --agree-tos \
+#   --non-interactive \
+#   --email shaahid.adams@gmail.com

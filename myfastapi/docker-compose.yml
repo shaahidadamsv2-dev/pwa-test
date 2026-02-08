@@ -1,5 +1,7 @@
-version: "3.9"
-
+## This docker-compose.yml file defines two services: 'api' for the FastAPI application and 'postgres' for the PostgreSQL database. 
+## The 'api' service depends on the 'postgres' service, which ensures that the database is healthy before the API starts. 
+## Both services are connected to a shared network, and the PostgreSQL data is persisted using a named volume.
+## Shared network is what nginx is connected to, so that nginx can route requests to the api container.
 services:
   api:
     build: .
